@@ -1,5 +1,5 @@
 package:
-  name: cmake_example
+  name: osc_binding
   version: 0.0.1
 
 source:
@@ -25,7 +25,7 @@ requirements:
 
 test:
   imports:
-    - cmake_example
+    - osc_binding
   source_files:
     - tests
   commands:
