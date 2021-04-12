@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.4...3.18)
 project(osc_binding)
 
-include_directories(/home/clothmanip/school/osc_ws/src/osc/include)
+
+include_directories(${ROBOTICS_PATH}/osc_ws/src/osc/include)
 add_subdirectory(pybind11)
 pybind11_add_module(osc_binding src/main.cpp)
 

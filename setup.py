@@ -15,6 +15,7 @@ PLAT_TO_CMAKE = {
 }
 
 
+
 # A CMakeExtension needs a sourcedir instead of a file list.
 # The name must be the _single_ output extension from the CMake build.
 # If you need multiple extensions, see scikit-build.
@@ -22,7 +23,6 @@ class CMakeExtension(Extension):
     def __init__(self, name, sourcedir=""):
         Extension.__init__(self, name, sources=[])
         self.sourcedir = os.path.abspath(sourcedir)
-
 
 class CMakeBuild(build_ext):
     def build_extension(self, ext):
@@ -41,7 +41,9 @@ class CMakeBuild(build_ext):
         # Set Python_EXECUTABLE instead if you use PYBIND11_FINDPYTHON
         # EXAMPLE_VERSION_INFO shows you how to pass a value into the C++ code
         # from Python.
+        robotics_path = os.environ["ROBOTICS_PATH"]
         cmake_args = [
+            f"-DROBOTICS_PATH={robotics_path}",
             "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={}".format(extdir),
             "-DPYTHON_EXECUTABLE={}".format(sys.executable),
             "-DEXAMPLE_VERSION_INFO={}".format(self.distribution.get_version()),
